@@ -20,6 +20,7 @@ const ClientOnly = ({ children }: { children: React.ReactNode }) => {
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const basePath = process.env.BASE_PATH || '';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -46,7 +47,7 @@ export default function Home() {
           <div className="flex items-center space-x-8">
             <div className="flex items-center space-x-3">
               <Image
-                src="/assets/logo.png"
+                src={`${basePath}/assets/logo.png`}
                 alt="닥터링크 로고"
                 width={120}
                 height={32}
@@ -811,7 +812,7 @@ export default function Home() {
                 <div className="text-center">
                   <div className="flex items-center justify-center space-x-3 mb-4">
                     <Image
-                      src="/assets/logo.png"
+                      src={`${basePath}/assets/logo.png`}
                       alt="닥터링크 로고"
                       width={120}
                       height={32}
