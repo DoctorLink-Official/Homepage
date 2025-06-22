@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   distDir: 'dist',
+  basePath: '/Homepage',
+  assetPrefix: '/Homepage/',
   images: {
     unoptimized: true,
   },
