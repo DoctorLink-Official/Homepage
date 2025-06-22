@@ -30,8 +30,15 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Build
+    - name: Build (GitHub Pages)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[custom-domain]')
       run: npm run build
+      env:
+        USE_BASE_PATH: true
+
+    - name: Build (Custom Domain)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[custom-domain]')
+      run: npm run build:custom-domain
 
     - name: Setup Pages
       uses: actions/configure-pages@v4

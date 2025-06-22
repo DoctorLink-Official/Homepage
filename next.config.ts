@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/Homepage' : '';
+// GitHub Pages용 basePath 설정 (커스텀 도메인 사용 시에는 빈 문자열)
+const useBasePath = process.env.USE_BASE_PATH === 'true';
+const basePath = isProd && useBasePath ? '/Homepage' : '';
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -9,7 +11,7 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   distDir: 'dist',
   basePath: basePath,
-  assetPrefix: isProd ? '/Homepage/' : undefined,
+  assetPrefix: isProd && useBasePath ? '/Homepage/' : undefined,
   images: {
     unoptimized: true,
   },
