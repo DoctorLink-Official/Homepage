@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 
 // Client-only component to prevent hydration mismatch
